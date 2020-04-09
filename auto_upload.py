@@ -15,8 +15,6 @@ def upload(username, password):
     elem.send_keys(username)
     elem = driver.find_element_by_id('pd')
     elem.send_keys(password)
-    elem = driver.find_element_by_id('index_login_btn')
-    elem.click()
 
     # commit
     driver.get(address)
@@ -30,7 +28,7 @@ if __name__ == '__main__':
     address = open('address.txt').readline()
     user_info = open('user_info.txt')
     for i in user_info:
-        p = user_info.readline()
+        p = user_info.readline().strip('\n')+'\n'
         try:
             upload(i, p)
         except BaseException:

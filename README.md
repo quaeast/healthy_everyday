@@ -14,5 +14,5 @@ pip install selenium
 
 ```bash
 # 自动执行
-crontab python 
+crontab crontab.txt
 ```

@@ -2,9 +2,15 @@
 
 ### 安装依赖
 
+### 安装 python 模块
+
 ```bash
 pip install selenium
 ```
+
+### 安装 Chrome 驱动
+
+[地址](https://sites.google.com/a/chromium.org/chromedriver/downloads)
 
 ### 更改配置
 

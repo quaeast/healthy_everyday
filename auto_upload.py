@@ -5,11 +5,6 @@ import os
 import sys
 
 
-# option = webdriver.ChromeOptions()
-# option.add_argument('headless')
-# driver = webdriver.Chrome(options=option)
-
-
 def upload(username, password):
     # login
     driver = webdriver.Chrome()
@@ -40,9 +35,8 @@ if __name__ == '__main__':
     user_info = open(os.path.join(dir_name, 'user_info.txt'))
     for i in user_info:
         p = user_info.readline().strip('\n') + '\n'
-        upload(i, p)
-        # try:
-        #     upload(i, p)
-        # except BaseException:
-        #     print(i)
-        #     pass
+        try:
+            upload(i, p)
+        except BaseException:
+            print(i+'失败')
+            pass

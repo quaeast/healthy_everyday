@@ -1,3 +1,4 @@
+#!env python
 from selenium import webdriver
 import time
 
@@ -18,20 +19,29 @@ def upload(username, password):
 
     # commit
     driver.get(address)
-    elem = driver.find_element_by_id('commit')
-    elem.click()
     time.sleep(10)
-    driver.close()
+    while True:
+        try:
+            commit = driver.find_element_by_id('commit')
+            print(commit.text)
+            commit.click()
+            break
+        except BaseException as e:
+            print(e.args)
+            print('error')
+            pass
 
+
+time.sleep(10)
 
 if __name__ == '__main__':
     address = open('address.txt').readline()
     user_info = open('user_info.txt')
     for i in user_info:
-        p = user_info.readline().strip('\n')+'\n'
-        try:
-            upload(i, p)
-        except BaseException:
-            print(i)
-            pass
-
+        p = user_info.readline().strip('\n') + '\n'
+        upload(i, p)
+        # try:
+        #     upload(i, p)
+        # except BaseException:
+        #     print(i)
+        #     pass

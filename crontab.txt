@@ -1,1 +1,1 @@
-10 0 * * * /usr/local/anaconda3/bin/python /Users/fang/Desktop/tests/healthy_everyday/auto_upload.py
+10 0 * * * /Users/fang/Desktop/tests/healthy_everyday/auto_upload.py

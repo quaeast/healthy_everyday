@@ -1,1 +1,5 @@
-10 0 * * * /Users/fang/Desktop/tests/healthy_everyday/auto_upload.py
+SHELL=/bin/zsh
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin/
+HOME=/Users/fang
+
+10 1 * * * /Users/fang/Desktop/tests/healthy_everyday/auto_upload.py>>~/healthy_everyday.txt

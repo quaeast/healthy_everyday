@@ -1,6 +1,8 @@
-#!env python
+#!/usr/local/anaconda3/bin/python
 from selenium import webdriver
 import time
+import os
+import sys
 
 
 # option = webdriver.ChromeOptions()
@@ -23,8 +25,8 @@ def upload(username, password):
     while True:
         try:
             commit = driver.find_element_by_id('commit')
-            print(commit.text)
             commit.click()
+            print(commit.text)
             break
         except BaseException as e:
             print(e.args)
@@ -32,11 +34,10 @@ def upload(username, password):
             pass
 
 
-time.sleep(10)
-
 if __name__ == '__main__':
-    address = open('address.txt').readline()
-    user_info = open('user_info.txt')
+    dir_name = os.path.dirname(sys.argv[0])
+    address = open(os.path.join(dir_name, 'address.txt')).readline()
+    user_info = open(os.path.join(dir_name, 'user_info.txt'))
     for i in user_info:
         p = user_info.readline().strip('\n') + '\n'
         upload(i, p)

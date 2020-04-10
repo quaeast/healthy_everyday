@@ -23,3 +23,6 @@ pip install selenium
 # 自动执行
 crontab crontab.txt
 ```
+## 主义
+
+需要给 cron 和 crontab full disk access

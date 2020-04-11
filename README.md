@@ -17,7 +17,6 @@ pip install selenium
 * 新建 `user_info.txt`，逐行添加用户名和密码
 * 更改 `crontab.txt` 中 `upload.py` 的绝对路径
 * 修改 `auto_upload.py` 的 `#!` 路径 
-* 设置 Energy Saver 中的自动启动时间为00:10之前
 * 运行如下命令实现定时启动
 
 ```shell script
@@ -25,9 +24,10 @@ pip install selenium
 crontab crontab.txt
 ```
 
-## 注意
+## Mac 配置
 
 * 需要给 cron 和 crontab 两个软件 full disk access
+* 设置 Energy Saver 中的自动启动时间为00:10之前
 
 ## Ubuntu server 配置
 

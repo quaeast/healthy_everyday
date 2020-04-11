@@ -6,8 +6,11 @@ import sys
 
 
 def upload(username, password):
+    option = webdriver.ChromeOptions()
+    option.add_argument('headless')
+
     # login
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=option)
     driver.get(address)
     elem = driver.find_element_by_id('un')
     elem.send_keys(username)
@@ -16,10 +19,11 @@ def upload(username, password):
 
     # commit
     driver.get(address)
-    time.sleep(10)
+    # time.sleep(10)
     while True:
         try:
             commit = driver.find_element_by_id('commit')
+            time.sleep(10)
             commit.click()
             print(commit.text)
             break

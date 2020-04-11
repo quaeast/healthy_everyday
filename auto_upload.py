@@ -1,5 +1,7 @@
 #!/usr/local/anaconda3/bin/python
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import ElementClickInterceptedException
 import time
 import os
 import sys
@@ -19,18 +21,20 @@ def upload(username, password):
 
     # commit
     driver.get(address)
-    # time.sleep(10)
-    while True:
+    flag = True
+    while flag:
         try:
+            time.sleep(60)
             commit = driver.find_element_by_id('commit')
-            time.sleep(10)
             commit.click()
-            print(commit.text)
-            break
-        except BaseException as e:
-            print(e.args)
-            print('error')
-            pass
+            print(str(username) + commit.text)
+            flag = False
+        except NoSuchElementException as e:
+            print('获取中...')
+        except ElementClickInterceptedException as e:
+            print('已平安')
+            flag = False
+    driver.close()
 
 
 if __name__ == '__main__':
@@ -39,8 +43,4 @@ if __name__ == '__main__':
     user_info = open(os.path.join(dir_name, 'user_info.txt'))
     for i in user_info:
         p = user_info.readline().strip('\n') + '\n'
-        try:
-            upload(i, p)
-        except BaseException:
-            print(i+'失败')
-            pass
+        upload(i, p)

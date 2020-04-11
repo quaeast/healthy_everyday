@@ -29,14 +29,6 @@ crontab crontab.txt
 
 * 需要给 cron 和 crontab 两个软件 full disk access
 
-## 笔记
-
-```python
-# 不显示浏览器（存疑）
-option = webdriver.ChromeOptions()
-option.add_argument('headless')
-driver = webdriver.Chrome(options=option)
-```
 ## Ubuntu server 配置
 
 ### 安装Chrome

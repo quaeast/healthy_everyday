@@ -14,7 +14,7 @@ pip install selenium
 
 ## 更改配置
 
-* 新建 `user_info.txt`，逐行添加用户名和密码
+* 新建 `user_info.txt`，逐行添加用户名和密码（格式为一行学号一行密码，中间和结尾无空行）
 * 更改 `crontab.txt` 中 `upload.py` 的绝对路径
 * 修改 `auto_upload.py` 的 `#!` 路径 
 * 运行如下命令实现定时启动
@@ -56,4 +56,15 @@ google-chrome --version
 wget https://sites.google.com/a/chromium.org/chromedriver/downloads
 unzip chromedriver_linux64.zip
 mv chromedriver /usr/bin
+```
+
+### docker 配置
+
+```shell script
+docker build . -t healthy_every_day
+docker run -Pit healthy_every_day
+
+# 在 user_info.txt 中添加学号姓名，可以添加多人，要求中间无空行，结尾无空行。
+
+ctrl + pq
 ```

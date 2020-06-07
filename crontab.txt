@@ -1,5 +1,5 @@
 SHELL=/bin/zsh
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin/
-HOME=/Users/fang
+HOME=/home/fang
 
-10 0 * * * /Users/fang/Desktop/tests/healthy_everyday/auto_upload.py>>~/healthy_everyday.txt
+1 0 * * * /home/fang/healthy_everyday/auto_upload.py>>~/healthy_everyday.txt

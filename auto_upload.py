@@ -6,14 +6,19 @@ import time
 import os
 import sys
 
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+
 
 def upload(username, password):
     option = webdriver.ChromeOptions()
     option.add_argument('headless')
 
     # login
-    driver = webdriver.Chrome(options=option)
+    driver = webdriver.Chrome()
     driver.get(address)
+    wait = WebDriverWait(driver, 60)
     elem = driver.find_element_by_id('un')
     elem.send_keys(username)
     elem = driver.find_element_by_id('pd')
@@ -21,19 +26,9 @@ def upload(username, password):
 
     # commit
     driver.get(address)
-    flag = True
-    while flag:
-        try:
-            time.sleep(60)
-            commit = driver.find_element_by_id('commit')
-            commit.click()
-            print(str(username) + commit.text)
-            flag = False
-        except NoSuchElementException as e:
-            print('获取中...')
-        except ElementClickInterceptedException as e:
-            print('已平安')
-            flag = False
+    commit = wait.until(EC.element_to_be_clickable((By.ID, 'commit')))
+    print(commit.text)
+    commit.click()
     driver.close()
 
 

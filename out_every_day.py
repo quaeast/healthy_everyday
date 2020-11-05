@@ -70,7 +70,7 @@ def out_upload(username, password, address):
     driver.switch_to.default_content()
     commit_button = driver.find_elements_by_xpath("//button[@id=\"commit\"]")[0]
     print(commit_button.text)
-    # commit_button.click()
+    commit_button.click()
     # time.sleep(1000)
 
 

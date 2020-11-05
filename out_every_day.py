@@ -5,7 +5,9 @@ import sys
 import time
 
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchFrameException
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
 
 def click_select_list(my_driver, data_id, answer_position):
@@ -23,6 +25,8 @@ def out_upload(username, password, address):
     # login
     driver = webdriver.Chrome(options=option)
     driver.get(address)
+    wait = WebDriverWait(driver, 60)
+    driver.implicitly_wait(60)
     elem = driver.find_element_by_id('un')
     elem.send_keys(username)
     elem = driver.find_element_by_id('pd')
@@ -30,21 +34,11 @@ def out_upload(username, password, address):
 
     apply_button = driver.find_element_by_name('学生出校申请')
     apply_button.click()
-    while True:
-        try:
-            confirm_button = driver.find_elements_by_css_selector('#layui-layer1 .layui-layer-btn0')[0]
-            if confirm_button.is_enabled():
-                confirm_button.click()
-                break
-        except IndexError:
-            pass
 
-    while True:
-        try:
-            driver.switch_to.frame('formIframe')
-            break
-        except NoSuchFrameException:
-            time.sleep(0.5)
+    confirm_button = wait.until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, '#layui-layer1 .layui-layer-btn0:first-of-type')))
+    confirm_button.click()
+    wait.until(EC.frame_to_be_available_and_switch_to_it('formIframe'))
 
     # 出校类别
     click_select_list(driver, "CXLB", 0)
@@ -76,7 +70,8 @@ def out_upload(username, password, address):
     driver.switch_to.default_content()
     commit_button = driver.find_elements_by_xpath("//button[@id=\"commit\"]")[0]
     print(commit_button.text)
-    commit_button.click()
+    # commit_button.click()
+    # time.sleep(1000)
 
 
 if __name__ == '__main__':

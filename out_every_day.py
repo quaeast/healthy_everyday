@@ -18,13 +18,13 @@ def click_select_list(my_driver, data_id, answer_position):
     list_item.click()
 
 
-def out_upload(username, password, address):
+def out_upload(username, password, web_address, **kwargs):
     option = webdriver.ChromeOptions()
     option.add_argument('headless')
 
     # login
     driver = webdriver.Chrome(options=option)
-    driver.get(address)
+    driver.get(web_address)
     wait = WebDriverWait(driver, 60)
     driver.implicitly_wait(60)
     elem = driver.find_element_by_id('un')
@@ -53,7 +53,7 @@ def out_upload(username, password, address):
 
     # 具体事由
     other_reasons = driver.find_element_by_id('QTSY')
-    other_reasons.send_keys("计算所科研")
+    other_reasons.send_keys(kwargs['specific_reason'])
 
     # 时间
     today = datetime.date.today()
@@ -80,4 +80,5 @@ if __name__ == '__main__':
     user_info = open(os.path.join(dir_name, 'out_user_info.txt'))
     for i in user_info:
         p = user_info.readline().strip('\n') + '\n'
-        out_upload(i, p, address)
+        specific_reason = user_info.readline().strip('\n') + '\n'
+        out_upload(i, p, address, specific_reason=specific_reason)

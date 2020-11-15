@@ -1,4 +1,4 @@
-#!/usr/local/anaconda3/bin/python
+#!/home/fang/anaconda3/bin/python
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementClickInterceptedException
@@ -28,7 +28,12 @@ def upload(username, password):
     driver.get(address)
     commit = wait.until(EC.element_to_be_clickable((By.ID, 'commit')))
     print(commit.text)
-    commit.click()
+    for i in range(10):
+        time.sleep(100)
+        print(i)
+        commit.click()
+        if not commit.is_enabled():
+            break
     driver.close()
 
 

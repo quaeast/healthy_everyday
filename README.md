@@ -24,11 +24,6 @@ pip install selenium
 crontab crontab.txt
 ```
 
-## Mac 配置
-
-* 需要给 cron 和 crontab 两个软件 full disk access
-* 设置 Energy Saver 中的自动启动时间为00:10之前
-
 ## Ubuntu server 配置
 
 ### 安装Chrome
@@ -68,3 +63,6 @@ docker run -Pit healthy_every_day
 
 ctrl + pq
 ```
+
+## 新增出校申请 out_every_day.py
+

@@ -1,6 +1,8 @@
 # 自动报健康
 
-## 安装依赖
+## 新增出校申请 out_every_day.py
+
+## 通用配置
 
 ### 安装 python 模块
 
@@ -53,7 +55,7 @@ unzip chromedriver_linux64.zip
 mv chromedriver /usr/bin
 ```
 
-### docker 配置
+## docker 配置，不全不建议使用
 
 ```shell script
 docker build . -t healthy_every_day
@@ -63,6 +65,3 @@ docker run -Pit healthy_every_day
 
 ctrl + pq
 ```
-
-## 新增出校申请 out_every_day.py
-

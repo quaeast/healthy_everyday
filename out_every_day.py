@@ -80,5 +80,5 @@ if __name__ == '__main__':
     user_info = open(os.path.join(dir_name, 'out_user_info.txt'))
     for i in user_info:
         p = user_info.readline().strip('\n') + '\n'
-        specific_reason = user_info.readline().strip('\n') + '\n'
+        specific_reason = user_info.readline().strip('\n')
         out_upload(i, p, address, specific_reason=specific_reason)

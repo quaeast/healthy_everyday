@@ -10,10 +10,6 @@
 pip install selenium
 ```
 
-### 安装 Chrome 驱动
-
-[地址](https://sites.google.com/a/chromium.org/chromedriver/downloads)
-
 ## 更改配置
 
 * 新建 `user_info.txt`，逐行添加用户名和密码（格式为一行学号一行密码，中间和结尾无空行）

@@ -56,8 +56,8 @@ def out_upload(username, password, web_address, **kwargs):
     other_reasons.send_keys(kwargs['specific_reason'])
 
     # 时间
-    today = datetime.date.today()
-    out_time_string = str(today) + ' 08:30'
+    today = datetime.date.today() + datetime.timedelta(days=1)
+    out_time_string = str(today) + ' 00:01'
     back_time_string = str(today) + ' 23:59'
     driver.execute_script("document.getElementById('JHCXSJ').value = \"%s\"" % (out_time_string,))
     driver.execute_script("document.getElementById('JHFXSJ').value = \"%s\"" % (back_time_string,))

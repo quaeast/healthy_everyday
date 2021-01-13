@@ -15,7 +15,10 @@ def click_select_list(my_driver, data_id, answer_position):
     main_button.click()
     list_item = \
         my_driver.find_elements_by_xpath("//button[@data-id=\"%s\"]/..//li[@rel='%d']" % (data_id, answer_position))[0]
-    list_item.click()
+    try:
+        list_item.click()
+    except:
+        pass
 
 
 def out_upload(username, password, web_address, **kwargs):

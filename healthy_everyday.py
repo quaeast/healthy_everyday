@@ -6,9 +6,11 @@ import time
 import os
 import sys
 
+from out_every_day import click_select_list
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+import random
 
 
 def upload(username, password):
@@ -16,7 +18,7 @@ def upload(username, password):
     option.add_argument('headless')
 
     # login
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=option)
     driver.get(address)
     wait = WebDriverWait(driver, 60)
     elem = driver.find_element_by_id('un')
@@ -26,14 +28,18 @@ def upload(username, password):
 
     # commit
     driver.get(address)
+
+    wait.until(EC.frame_to_be_available_and_switch_to_it('formIframe'))
+
+    click_select_list(driver, "TW1", random.randint(1, 6))
+    click_select_list(driver, "TW2", random.randint(1, 6))
+    click_select_list(driver, "TW3", random.randint(1, 6))
+
+    driver.switch_to.default_content()
+
     commit = wait.until(EC.element_to_be_clickable((By.ID, 'commit')))
-    print(commit.text)
-    for i in range(10):
-        time.sleep(100)
-        print(i)
-        commit.click()
-        if not commit.is_enabled():
-            break
+    commit.click()
+    # time.sleep(1000)
     driver.close()
 
 

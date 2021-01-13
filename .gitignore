@@ -5,3 +5,4 @@ user_info.txt
 out_user_info.txt
 /.vscode/
 __pycache__
+test.py

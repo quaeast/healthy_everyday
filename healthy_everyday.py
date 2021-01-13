@@ -2,8 +2,10 @@
 import os
 import random
 import sys
+from datetime import datetime
 
 from selenium import webdriver
+from selenium.common.exceptions import UnexpectedAlertPresentException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -45,6 +47,11 @@ if __name__ == '__main__':
     dir_name = os.path.dirname(sys.argv[0])
     address = open(os.path.join(dir_name, 'address.txt')).readline()
     user_info = open(os.path.join(dir_name, 'user_info.txt'))
+    print(datetime.today())
     for i in user_info:
         p = user_info.readline().strip('\n') + '\n'
-        upload(i, p)
+        try:
+            upload(i, p)
+            print(i + " 填报完成")
+        except UnexpectedAlertPresentException:
+            print(i + " 已经填报")

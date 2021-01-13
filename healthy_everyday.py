@@ -1,16 +1,14 @@
 #!/home/fang/anaconda3/bin/python
-from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import ElementClickInterceptedException
-import time
 import os
+import random
 import sys
 
-from out_every_day import click_select_list
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium import webdriver
 from selenium.webdriver.common.by import By
-import random
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
+from out_every_day import click_select_list
 
 
 def upload(username, password):

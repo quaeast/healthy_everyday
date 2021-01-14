@@ -22,6 +22,8 @@ pip install selenium
 crontab crontab.txt
 ```
 
+**注意：不要用 root 运行**
+
 ## Ubuntu server 配置
 
 ### 安装Chrome

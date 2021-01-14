@@ -53,13 +53,14 @@ unzip chromedriver_linux64.zip
 mv chromedriver /usr/bin
 ```
 
-## docker 配置，不全不建议使用
+## docker 一键部署
 
 ```shell script
-docker build . -t healthy_every_day
-docker run -Pit healthy_every_day
+sudo docker pull quaeast/healthy
 
-# 在 user_info.txt 中添加学号姓名，可以添加多人，要求中间无空行，结尾无空行。
+sudo docker run -p 8888:22 -d --name systemd-ubuntu --tmpfs /tmp --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro quaeast/healthy
 
-ctrl + pq
+# passwd: fang
+ssh -p 8888 fang@localhost echo "{username}\n{password}" >> /home/fang/healthy_everyday/user_info.txt
 ```
+

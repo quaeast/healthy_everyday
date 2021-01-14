@@ -61,6 +61,6 @@ sudo docker pull quaeast/healthy
 sudo docker run -p 8888:22 -d --name systemd-ubuntu --tmpfs /tmp --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro quaeast/healthy
 
 # passwd: fang
-ssh -p 8888 fang@localhost echo "{username}\n{password}" >> /home/fang/healthy_everyday/user_info.txt
+ssh -p 8888 fang@localhost 'echo "{username}\n{password}" >> /home/fang/healthy_everyday/user_info.txt'
 ```
 

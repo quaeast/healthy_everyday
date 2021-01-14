@@ -1,4 +1,5 @@
 #!/home/fang/anaconda3/bin/python
+# -*- coding: utf-8 -*-
 import os
 import random
 import sys
@@ -32,9 +33,13 @@ def upload(username, password):
 
     wait.until(EC.frame_to_be_available_and_switch_to_it('formIframe'))
 
-    click_select_list(driver, "TW1", random.randint(1, 6))
-    click_select_list(driver, "TW2", random.randint(1, 6))
-    click_select_list(driver, "TW3", random.randint(1, 6))
+    click_select_list(driver, "TW1", 1)
+    click_select_list(driver, "TW2", 1)
+    click_select_list(driver, "TW3", 1)
+
+    click_select_list(driver, "TW1", random.randint(2, 6))
+    click_select_list(driver, "TW2", random.randint(2, 6))
+    click_select_list(driver, "TW3", random.randint(2, 6))
 
     driver.switch_to.default_content()
 
@@ -53,6 +58,6 @@ if __name__ == '__main__':
         p = user_info.readline().strip('\n') + '\n'
         try:
             upload(i, p)
-            print(i + " 填报完成")
+            print(i + "uploaded")
         except UnexpectedAlertPresentException:
-            print(i + " 已经填报")
+            print(i + "had uploaded")

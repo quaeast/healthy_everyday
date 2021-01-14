@@ -12,7 +12,10 @@ from selenium.webdriver.common.by import By
 
 def click_select_list(my_driver, data_id, answer_position):
     main_button = my_driver.find_elements_by_xpath("//button[@data-id=\"%s\"]" % (data_id,))[0]
-    main_button.click()
+    try:
+        main_button.click()
+    except:
+        return
     list_item = \
         my_driver.find_elements_by_xpath("//button[@data-id=\"%s\"]/..//li[@rel='%d']" % (data_id, answer_position))[0]
     try:

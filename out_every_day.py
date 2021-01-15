@@ -14,7 +14,7 @@ def click_select_list(my_driver, data_id, answer_position):
     wait = WebDriverWait(my_driver, 60)
     main_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@data-id='%s'][1]" % (data_id,))))
     my_driver.execute_script("arguments[0].click();", main_button)
-    list_item = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@data-id='%s']/..//li[@rel='%d']" % (data_id, answer_position))))
+    list_item = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@data-id='%s']/..//li[@rel='%d']/a" % (data_id, answer_position))))
     my_driver.execute_script("arguments[0].click();", list_item)
 
 

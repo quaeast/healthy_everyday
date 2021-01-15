@@ -11,17 +11,11 @@ from selenium.webdriver.common.by import By
 
 
 def click_select_list(my_driver, data_id, answer_position):
-    main_button = my_driver.find_elements_by_xpath("//button[@data-id=\"%s\"]" % (data_id,))[0]
-    try:
-        main_button.click()
-    except:
-        return
-    list_item = \
-        my_driver.find_elements_by_xpath("//button[@data-id=\"%s\"]/..//li[@rel='%d']" % (data_id, answer_position))[0]
-    try:
-        list_item.click()
-    except:
-        pass
+    wait = WebDriverWait(my_driver, 60)
+    main_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@data-id='%s'][1]" % (data_id,))))
+    main_button.click()
+    list_item = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@data-id='%s']/..//li[@rel='%d']" % (data_id, answer_position))))
+    list_item.click()
 
 
 def out_upload(username, password, web_address, **kwargs):

@@ -62,5 +62,8 @@ sudo docker run -p 8888:22 -d --name systemd-ubuntu --tmpfs /tmp --tmpfs /run --
 
 # passwd: fang
 ssh -p 8888 fang@localhost 'echo -e "{username}\n{password}" >> /home/fang/healthy_everyday/user_info.txt'
+
+# 更新代码
+ssh -p 8888 fang@localhost 'cd ~/healthy_everyday;ls;git fetch;git rebase'
 ```
 

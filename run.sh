@@ -1,6 +1,6 @@
-#!/bin/zsh
-
-for i in {1..100}
-do
-    python out_every_day.py 
+#!/bin/bash
+echo '---------------------------------'
+python healthy_everyday_docker.py
+while [[ $? -eq 1 ]]; do
+    python healthy_everyday_docker.py
 done

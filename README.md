@@ -55,6 +55,20 @@ mv chromedriver /usr/bin
 
 ## docker 一键部署
 
+
+### bash init (recmmend)
+
+```shell script
+sudo docker pull quaeast/healthy_everyday:latest
+
+docker run -it --name healthy quaeast/healthy_everyday:latest
+
+cd /root/healthy_everyday;echo -e "{username}\n{password}" >> user_info.txt
+```
+按 `ctrl p+q` detach
+
+### systemd init
+
 ```shell script
 sudo docker pull quaeast/healthy
 
@@ -66,4 +80,3 @@ ssh -p 8888 fang@localhost 'echo -e "{username}\n{password}" >> /home/fang/healt
 # 更新代码
 ssh -p 8888 fang@localhost 'cd ~/healthy_everyday;ls;git fetch;git rebase'
 ```
-

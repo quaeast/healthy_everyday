@@ -28,7 +28,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo -e "$H_USER\n$H_PSW>user_info.txt;cat user_info.txt;bash run.sh
+        run: echo -e "$H_USER\n$H_PSW">user_info.txt;cat user_info.txt;bash run.sh
         env:
           H_USER: ${{ secrets.USERNAME }}
           H_PSW: ${{ secrets.PASSWORD }}

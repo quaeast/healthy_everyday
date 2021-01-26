@@ -2,6 +2,12 @@
 
 ## 新增出校申请 out_every_day.py
 
+## 新增零部署功能
+
+fork本项目，携带 github actions 配置文件。之后在 Settings-Sectets-Actions secrets 下点击 New repository secret，添加 secret 变量`USERNAME`和`PASSWORD`为数字北林的账号和密码（应该就是校园网的）。即可在每天1：15自动报健康。
+
+感谢[Supermesir](https://github.com/Supremesir)同学的启发。
+
 ## 通用配置
 
 ### 安装 python 模块

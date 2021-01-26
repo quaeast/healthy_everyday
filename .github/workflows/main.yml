@@ -32,5 +32,3 @@ jobs:
         env:
           H_USER: ${{ secrets.USERNAME }}
           H_PSW: ${{ secrets.PASSWORD }}
-      - name: show structure
-        run: pwd;ls `pwd`

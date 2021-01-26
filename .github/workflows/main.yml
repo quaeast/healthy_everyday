@@ -28,4 +28,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo -e ${{ secrets.username }}\n${{ secrets.password }}>user_info.txt;bash run.sh
+        run: echo -e ${{ secrets.USERNAME }}\n${{ secrets.PASSWORD }}>user_info.txt;echo user_info.txt;bash run.sh

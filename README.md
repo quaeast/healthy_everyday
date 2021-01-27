@@ -4,7 +4,11 @@
 
 ## 新增零部署功能
 
-fork本项目，携带 github actions 配置文件。之后在 Settings-Secrets-Actions secrets 下点击 New repository secret，添加 secret 变量`USERNAME`和`PASSWORD`为数字北林的账号和密码（应该就是校园网的）。即可在每天1：15自动报健康。
+1. fork本项目，会自动携带 github actions 配置文件。
+2. 在 Settings-Secrets-Actions secrets 下点击 New repository secret，添加 secret 变量`USERNAME`和`PASSWORD`为数字北林的 账号 和 密码（应该就是校园网的）。
+3. fork后的 Workflow 默认是禁用的，需要点击 Actions 下名为 healthy_everyday 的 workflow，点击右上角的 "Enable workflow"。![image-20210126222607171](https://my-image-hosting.oss-cn-beijing.aliyuncs.com/uPic/image-20210126222607171.png)
+
+4. 默认在每天1：15自动报健康（master分支的pr和push也会触发），可以修改 [main.yml](https://github.com/quaeast/healthy_everyday/blob/master/.github/workflows/main.yml) 中的`cron`参数来修改时间（注意请使用UTC）和触发条件。
 
 感谢 [Supremesir](https://github.com/Supremesir) 同学的启发。
 

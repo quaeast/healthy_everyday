@@ -31,7 +31,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: run healthy_every_day.py
-        run: echo "$H_USER\n$H_PSW">user_info.txt;bash run.sh
+        run: echo "$H_USER_INFO">user_info.txt;bash run.sh
         env:
-          H_USER: ${{ secrets.USERNAME }}
-          H_PSW: ${{ secrets.PASSWORD }}
+          H_USER_INFO: ${{ secrets.USER_INFO }}

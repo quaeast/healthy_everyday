@@ -21,6 +21,8 @@ def click_select_list(my_driver, data_id, answer_position):
 def out_upload(username, password, web_address, **kwargs):
     option = webdriver.ChromeOptions()
     option.add_argument('headless')
+    option.add_argument('--no-sandbox')
+    option.add_argument('--disable-dev-shm-usage')
 
     # login
     driver = webdriver.Chrome(options=option)
@@ -41,15 +43,15 @@ def out_upload(username, password, web_address, **kwargs):
     wait.until(EC.frame_to_be_available_and_switch_to_it('formIframe'))
 
     # 出校类别
-    click_select_list(driver, "CXLB", 0)
+    click_select_list(driver, "CXLB", 1)
 
     # 出校事由
-    click_select_list(driver, "CXSY", 0)
+    click_select_list(driver, "CXSY", 3)
 
     # 地区
-    click_select_list(driver, "SZSF", 0)
-    click_select_list(driver, "SZSQ", 0)
-    click_select_list(driver, "SZX", 5)
+    click_select_list(driver, "SZSF", 1)
+    click_select_list(driver, "SZSQ", 1)
+    click_select_list(driver, "SZX", 6)
 
     # 具体事由
     other_reasons = driver.find_element_by_id('QTSY')
@@ -70,8 +72,8 @@ def out_upload(username, password, web_address, **kwargs):
     driver.switch_to.default_content()
     commit_button = driver.find_elements_by_xpath("//button[@id=\"commit\"]")[0]
     print(commit_button.text)
-    commit_button.click()
-    # time.sleep(1000)
+    # commit_button.click()
+    time.sleep(1000)
 
 
 if __name__ == '__main__':
